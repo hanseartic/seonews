@@ -15,7 +15,7 @@ class Admin_TopicsControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
         $urlParams = $this->urlizeOptions($params);
         $url = $this->url($urlParams);
         $this->dispatch($url);
-        
+
         // assertions
         $this->assertModule($urlParams['module']);
         $this->assertController($urlParams['controller']);
@@ -24,6 +24,7 @@ class Admin_TopicsControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
             'div#view-content p',
             'View script for controller <b>' . $params['controller'] . '</b> and script/action name <b>' . $params['action'] . '</b>'
             );
+        $this->assertResponseCode(200);
     }
 
     public function testGetAction()
@@ -32,7 +33,7 @@ class Admin_TopicsControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
         $urlParams = $this->urlizeOptions($params);
         $url = $this->url($urlParams);
         $this->dispatch($url);
-        
+
         // assertions
         $this->assertModule($urlParams['module']);
         $this->assertController($urlParams['controller']);
@@ -41,6 +42,7 @@ class Admin_TopicsControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
             'div#view-content p',
             'View script for controller <b>' . $params['controller'] . '</b> and script/action name <b>' . $params['action'] . '</b>'
             );
+        $this->assertResponseCode(200);
     }
 
     public function testPostAction()
@@ -49,7 +51,7 @@ class Admin_TopicsControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
         $urlParams = $this->urlizeOptions($params);
         $url = $this->url($urlParams);
         $this->dispatch($url);
-        
+
         // assertions
         $this->assertModule($urlParams['module']);
         $this->assertController($urlParams['controller']);
@@ -58,6 +60,7 @@ class Admin_TopicsControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
             'div#view-content p',
             'View script for controller <b>' . $params['controller'] . '</b> and script/action name <b>' . $params['action'] . '</b>'
             );
+        $this->assertResponseCode(201);
     }
 
     public function testPutAction()
@@ -66,7 +69,7 @@ class Admin_TopicsControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
         $urlParams = $this->urlizeOptions($params);
         $url = $this->url($urlParams);
         $this->dispatch($url);
-        
+
         // assertions
         $this->assertModule($urlParams['module']);
         $this->assertController($urlParams['controller']);
@@ -75,6 +78,7 @@ class Admin_TopicsControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
             'div#view-content p',
             'View script for controller <b>' . $params['controller'] . '</b> and script/action name <b>' . $params['action'] . '</b>'
             );
+        $this->assertResponseCode(200);
     }
 
     public function testDeleteAction()
@@ -83,7 +87,7 @@ class Admin_TopicsControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
         $urlParams = $this->urlizeOptions($params);
         $url = $this->url($urlParams);
         $this->dispatch($url);
-        
+
         // assertions
         $this->assertModule($urlParams['module']);
         $this->assertController($urlParams['controller']);
@@ -92,6 +96,7 @@ class Admin_TopicsControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
             'div#view-content p',
             'View script for controller <b>' . $params['controller'] . '</b> and script/action name <b>' . $params['action'] . '</b>'
             );
+        $this->assertResponseCode(204);
     }
 
 
