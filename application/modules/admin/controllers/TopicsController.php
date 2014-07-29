@@ -12,6 +12,28 @@ class Admin_TopicsController extends Zend_Controller_Action
     {
         // action body
     }
+
+    public function getAction()
+    {
+        // action body
+    }
+
+    public function postAction()
+    {
+        // action body
+    }
+
+    public function putAction()
+    {
+        // action body
+    }
+
+    public function deleteAction()
+    {
+        // action body
+    }
+
+
 }
 
 

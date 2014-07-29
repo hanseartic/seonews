@@ -25,6 +25,10 @@
           <controllersDirectory>
             <controllerFile controllerName="Topics">
               <actionMethod actionName="index"/>
+              <actionMethod actionName="get"/>
+              <actionMethod actionName="post"/>
+              <actionMethod actionName="put"/>
+              <actionMethod actionName="delete"/>
             </controllerFile>
             <controllerFile controllerName="Index">
               <actionMethod actionName="index"/>
@@ -43,6 +47,18 @@
               </viewControllerScriptsDirectory>
               <viewControllerScriptsDirectory forControllerName="Index">
                 <viewScriptFile forActionName="index"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Topics">
+                <viewScriptFile forActionName="get"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Topics">
+                <viewScriptFile forActionName="post"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Topics">
+                <viewScriptFile forActionName="put"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Topics">
+                <viewScriptFile forActionName="delete"/>
               </viewControllerScriptsDirectory>
             </viewScriptsDirectory>
             <viewHelpersDirectory/>
@@ -102,6 +118,10 @@
             <testApplicationControllerDirectory>
               <testApplicationControllerFile forControllerName="Topics">
                 <testApplicationActionMethod forActionName="index"/>
+                <testApplicationActionMethod forActionName="get"/>
+                <testApplicationActionMethod forActionName="post"/>
+                <testApplicationActionMethod forActionName="put"/>
+                <testApplicationActionMethod forActionName="delete"/>
               </testApplicationControllerFile>
               <testApplicationControllerFile forControllerName="Index">
                 <testApplicationActionMethod forActionName="index"/>
