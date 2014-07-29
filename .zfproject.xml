@@ -23,6 +23,9 @@
         <moduleDirectory moduleName="admin">
           <configsDirectory enabled="false"/>
           <controllersDirectory>
+            <controllerFile controllerName="Topics">
+              <actionMethod actionName="index"/>
+            </controllerFile>
             <controllerFile controllerName="Index">
               <actionMethod actionName="index"/>
             </controllerFile>
@@ -35,6 +38,9 @@
           <servicesDirectory enabled="false"/>
           <viewsDirectory>
             <viewScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Topics">
+                <viewScriptFile forActionName="index"/>
+              </viewControllerScriptsDirectory>
               <viewControllerScriptsDirectory forControllerName="Index">
                 <viewScriptFile forActionName="index"/>
               </viewControllerScriptsDirectory>
@@ -94,6 +100,9 @@
         <testApplicationModulesDirectory>
           <testApplicationModuleDirectory forModuleName="admin">
             <testApplicationControllerDirectory>
+              <testApplicationControllerFile forControllerName="Topics">
+                <testApplicationActionMethod forActionName="index"/>
+              </testApplicationControllerFile>
               <testApplicationControllerFile forControllerName="Index">
                 <testApplicationActionMethod forActionName="index"/>
               </testApplicationControllerFile>
