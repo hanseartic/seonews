@@ -148,6 +148,13 @@
               <testApplicationControllerFile forControllerName="Index">
                 <testApplicationActionMethod forActionName="index"/>
               </testApplicationControllerFile>
+              <testApplicationControllerFile forControllerName="Topics_Articles">
+                <testApplicationActionMethod forActionName="index"/>
+                <testApplicationActionMethod forActionName="get"/>
+                <testApplicationActionMethod forActionName="post"/>
+                <testApplicationActionMethod forActionName="put"/>
+                <testApplicationActionMethod forActionName="delete"/>
+              </testApplicationControllerFile>
             </testApplicationControllerDirectory>
           </testApplicationModuleDirectory>
         </testApplicationModulesDirectory>

@@ -1,6 +1,6 @@
 <?php
 
-class Admin_TopicsControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
+class Admin_Topics_ArticlesControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
 {
 
     public function setUp()
