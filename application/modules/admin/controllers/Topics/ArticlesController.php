@@ -1,6 +1,6 @@
 <?php
 
-class Admin_TopicsController extends Zend_Rest_Controller
+class Admin_Topics_ArticlesController extends Zend_Rest_Controller
 {
 
     public function init()
@@ -10,16 +10,28 @@ class Admin_TopicsController extends Zend_Rest_Controller
 
     public function indexAction()
     {
-        // action body
+        switch ($this->getRequest()->getMethod()) {
+            case 'DELETE':
+            case 'POST':
+            case 'PUT':
+                return $this->_forward($this->getRequest()->getMethod());
+                break;
+            case 'GET':
+            default:
+                $request_params = $this->getRequest()->getParams();
+                if (isset($request_params['article_id']))
+                {
+                    return $this->_forward('GET');
+                }
+                // action body
+                $this->getResponse()->setHttpResponseCode(200);
+        }
     }
 
     public function getAction()
     {
         // action body
-        $request_params = $this->getRequest()->getParams();
-        //if ($request_params['articles'])
-            print_r($request_params);
-            print($this->_getParam('id'));
+         $this->getResponse()->setHttpResponseCode(200);
     }
 
     public function postAction()
@@ -47,5 +59,3 @@ class Admin_TopicsController extends Zend_Rest_Controller
     }
 
 }
-
-
