@@ -48,6 +48,8 @@
           <modelsDirectory>
             <modelFile modelName="Topic"/>
             <modelFile modelName="TopicMock"/>
+            <modelFile modelName="Topics_ArticleMock"/>
+            <modelFile modelName="Topics_Article"/>
           </modelsDirectory>
           <servicesDirectory enabled="false"/>
           <viewsDirectory>

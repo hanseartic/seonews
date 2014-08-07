@@ -1,4 +1,9 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Topics/Articles</b> and script/action name <b>index</b></p>
-</div>
+<?php
+
+echo($this->json(array_map(
+    function($article)
+    {
+        return $article->toArray();
+    },
+    $this->articles))
+);

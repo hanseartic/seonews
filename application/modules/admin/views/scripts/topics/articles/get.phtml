@@ -1,5 +1,2 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Topics/Articles</b> and script/action name <b>get</b></p>
-    <?php echo $this->layout()->content ?>
-</div>
+<?php
+echo($this->json($this->article->toArray()));
