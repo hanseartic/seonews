@@ -30,6 +30,13 @@
               <actionMethod actionName="put"/>
               <actionMethod actionName="delete"/>
             </controllerFile>
+            <controllerFile controllerName="Topics_Articles">
+              <actionMethod actionName="index"/>
+              <actionMethod actionName="get"/>
+              <actionMethod actionName="post"/>
+              <actionMethod actionName="put"/>
+              <actionMethod actionName="delete"/>
+            </controllerFile>
             <controllerFile controllerName="Index">
               <actionMethod actionName="index"/>
             </controllerFile>
@@ -38,7 +45,12 @@
           <layoutsDirectory enabled="false">
             <layoutScriptsDirectory enabled="false"/>
           </layoutsDirectory>
-          <modelsDirectory/>
+          <modelsDirectory>
+            <modelFile modelName="Topic"/>
+            <modelFile modelName="TopicMock"/>
+            <modelFile modelName="Topics_ArticleMock"/>
+            <modelFile modelName="Topics_Article"/>
+          </modelsDirectory>
           <servicesDirectory enabled="false"/>
           <viewsDirectory>
             <viewScriptsDirectory>
@@ -58,6 +70,21 @@
                 <viewScriptFile forActionName="put"/>
               </viewControllerScriptsDirectory>
               <viewControllerScriptsDirectory forControllerName="Topics">
+                <viewScriptFile forActionName="delete"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Topics_Articles">
+                <viewScriptFile forActionName="index"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Topics_Articles">
+                <viewScriptFile forActionName="get"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Topics_Articles">
+                <viewScriptFile forActionName="post"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Topics_Articles">
+                <viewScriptFile forActionName="put"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Topics_Articles">
                 <viewScriptFile forActionName="delete"/>
               </viewControllerScriptsDirectory>
             </viewScriptsDirectory>
