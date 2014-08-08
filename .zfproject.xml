@@ -19,7 +19,80 @@
         </layoutScriptsDirectory>
       </layoutsDirectory>
       <modelsDirectory/>
-      <modulesDirectory enabled="false"/>
+      <modulesDirectory>
+        <moduleDirectory moduleName="admin">
+          <configsDirectory enabled="false"/>
+          <controllersDirectory>
+            <controllerFile controllerName="Topics">
+              <actionMethod actionName="index"/>
+              <actionMethod actionName="get"/>
+              <actionMethod actionName="post"/>
+              <actionMethod actionName="put"/>
+              <actionMethod actionName="delete"/>
+            </controllerFile>
+            <controllerFile controllerName="Topics_Articles">
+              <actionMethod actionName="index"/>
+              <actionMethod actionName="get"/>
+              <actionMethod actionName="post"/>
+              <actionMethod actionName="put"/>
+              <actionMethod actionName="delete"/>
+            </controllerFile>
+            <controllerFile controllerName="Index">
+              <actionMethod actionName="index"/>
+            </controllerFile>
+          </controllersDirectory>
+          <formsDirectory enabled="false"/>
+          <layoutsDirectory enabled="false">
+            <layoutScriptsDirectory enabled="false"/>
+          </layoutsDirectory>
+          <modelsDirectory>
+            <modelFile modelName="Topic"/>
+            <modelFile modelName="TopicMock"/>
+            <modelFile modelName="Topics_ArticleMock"/>
+            <modelFile modelName="Topics_Article"/>
+          </modelsDirectory>
+          <servicesDirectory enabled="false"/>
+          <viewsDirectory>
+            <viewScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Topics">
+                <viewScriptFile forActionName="index"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Index">
+                <viewScriptFile forActionName="index"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Topics">
+                <viewScriptFile forActionName="get"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Topics">
+                <viewScriptFile forActionName="post"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Topics">
+                <viewScriptFile forActionName="put"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Topics">
+                <viewScriptFile forActionName="delete"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Topics_Articles">
+                <viewScriptFile forActionName="index"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Topics_Articles">
+                <viewScriptFile forActionName="get"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Topics_Articles">
+                <viewScriptFile forActionName="post"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Topics_Articles">
+                <viewScriptFile forActionName="put"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Topics_Articles">
+                <viewScriptFile forActionName="delete"/>
+              </viewControllerScriptsDirectory>
+            </viewScriptsDirectory>
+            <viewHelpersDirectory/>
+            <viewFiltersDirectory/>
+          </viewsDirectory>
+        </moduleDirectory>
+      </modulesDirectory>
       <servicesDirectory enabled="false"/>
       <viewsDirectory>
         <viewScriptsDirectory>
@@ -67,6 +140,29 @@
             <testApplicationActionMethod forActionName="index"/>
           </testApplicationControllerFile>
         </testApplicationControllerDirectory>
+        <testApplicationModulesDirectory>
+          <testApplicationModuleDirectory forModuleName="admin">
+            <testApplicationControllerDirectory>
+              <testApplicationControllerFile forControllerName="Topics">
+                <testApplicationActionMethod forActionName="index"/>
+                <testApplicationActionMethod forActionName="get"/>
+                <testApplicationActionMethod forActionName="post"/>
+                <testApplicationActionMethod forActionName="put"/>
+                <testApplicationActionMethod forActionName="delete"/>
+              </testApplicationControllerFile>
+              <testApplicationControllerFile forControllerName="Index">
+                <testApplicationActionMethod forActionName="index"/>
+              </testApplicationControllerFile>
+              <testApplicationControllerFile forControllerName="Topics_Articles">
+                <testApplicationActionMethod forActionName="index"/>
+                <testApplicationActionMethod forActionName="get"/>
+                <testApplicationActionMethod forActionName="post"/>
+                <testApplicationActionMethod forActionName="put"/>
+                <testApplicationActionMethod forActionName="delete"/>
+              </testApplicationControllerFile>
+            </testApplicationControllerDirectory>
+          </testApplicationModuleDirectory>
+        </testApplicationModulesDirectory>
       </testApplicationDirectory>
       <testLibraryDirectory/>
     </testsDirectory>

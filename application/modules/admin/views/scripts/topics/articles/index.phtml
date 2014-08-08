@@ -1,0 +1,9 @@
+<?php
+
+echo($this->json(array_map(
+    function($article)
+    {
+        return $article->toArray();
+    },
+    $this->articles))
+);
