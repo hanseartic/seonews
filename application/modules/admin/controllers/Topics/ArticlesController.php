@@ -19,28 +19,34 @@ class Admin_Topics_ArticlesController extends Zend_Rest_Controller
             case 'DELETE':
             case 'POST':
             case 'PUT':
-                return $this->_forward($requestMethod);
+                return $this->_forward(strtolower($requestMethod));
                 break;
             case 'GET':
             default:
-                if (null !== $this->_getParam('article_id'))
-                {
-                    return $this->_forward('GET');
-                }
-                // this is the actual index-action
-                if ($articles = $this->_db_model->fetchAll())
-                {
-                    $this->getResponse()->setHttpResponseCode(200);
-                    $this->view->articles = $articles;
-                }
-                else
+                $_topic_db = new Admin_Model_TopicMock();
+                if (null == ($topic = $_topic_db->findById($this->_getParam('topic_id'))))
                 {
                     $this->view->json = array(
-                        'status' => 'Not found',
+                        'status' => 404,
                         'message' => 'The topic does not exist.',
                     );
                     return $this->_forward('notFound');
                 }
+                if (null !== $this->_getParam('article_id'))
+                {
+                    return $this->_forward('get');
+                }
+                // this is the actual index-action
+
+                if ($articles = $this->_db_model->fetchAll())
+                {
+                    $this->view->articles = $articles;
+                }
+                else
+                {
+                    $this->view->articles = array();
+                }
+                $this->getResponse()->setHttpResponseCode(200);
         }
     }
 
@@ -67,6 +73,15 @@ class Admin_Topics_ArticlesController extends Zend_Rest_Controller
         {
             return $this->_forward('put');
         }
+        $_topic_db = new Admin_Model_TopicMock();
+        if (null == ($topic = $_topic_db->findById($this->_getParam('topic_id'))))
+        {
+            $this->view->json = array(
+                'status' => 404,
+                'message' => 'The topic does not exist.',
+            );
+            return $this->_forward('notFound');
+        }
         $requestBody = $this->getRequest()->getRawBody();
         $payload = Zend_Json::decode($requestBody);
         $this->getResponse()->setHttpResponseCode(201);
@@ -87,7 +102,7 @@ class Admin_Topics_ArticlesController extends Zend_Rest_Controller
         $this->getResponse()->setHttpResponseCode(405);
         $this->view->message = array(
             'status' => 405,
-            'message' => 'Changing articles is not allowed.'
+            'message' => 'Altering articles is not allowed.'
         );
     }
 

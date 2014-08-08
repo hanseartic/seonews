@@ -11,7 +11,12 @@ class Admin_TopicsControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
 
     public function testIndexAction()
     {
-        $params = array('action' => 'index', 'controller' => 'Topics', 'module' => 'admin');
+        $action = 'get';
+
+        $params = array(
+            'controller' => 'topics',
+            'module' => 'admin'
+        );
         $urlParams = $this->urlizeOptions($params);
         $url = $this->url($urlParams);
         $this->dispatch($url);
@@ -19,53 +24,69 @@ class Admin_TopicsControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
         // assertions
         $this->assertModule($urlParams['module']);
         $this->assertController($urlParams['controller']);
-        $this->assertAction($urlParams['action']);
-        $this->assertQueryContentContains(
-            'div#view-content p',
-            'View script for controller <b>' . $params['controller'] . '</b> and script/action name <b>' . $params['action'] . '</b>'
-            );
+        $this->assertAction('index');
         $this->assertResponseCode(200);
+        $this->assertContains(
+            '"_title":',
+            $this->response->outputBody()
+        );
     }
 
     public function testGetAction()
     {
-        $params = array('action' => 'get', 'controller' => 'Topics', 'module' => 'admin');
+        $action = 'get';
+
+        $params = array(
+            'controller' => 'topics',
+            'module' => 'admin'
+        );
         $urlParams = $this->urlizeOptions($params);
-        $url = $this->url($urlParams);
+        $url = $this->url($urlParams) . '/3';
         $this->dispatch($url);
 
         // assertions
         $this->assertModule($urlParams['module']);
         $this->assertController($urlParams['controller']);
-        $this->assertAction($urlParams['action']);
-        $this->assertQueryContentContains(
-            'div#view-content p',
-            'View script for controller <b>' . $params['controller'] . '</b> and script/action name <b>' . $params['action'] . '</b>'
-            );
+        $this->assertAction($action);
         $this->assertResponseCode(200);
+        $this->assertContains(
+            '"_title":',
+            $this->response->outputBody()
+        );
     }
 
     public function testGetActionFail()
     {
-        $params = array('action' => 'get', 'controller' => 'Topics', 'module' => 'admin');
+        $action = 'get';
+
+        $params = array(
+            'controller' => 'topics',
+            'module' => 'admin'
+        );
         $urlParams = $this->urlizeOptions($params);
-        $url = $this->url($urlParams);
+        $url = $this->url($urlParams) . '/2';
         $this->dispatch($url);
 
         // assertions
         $this->assertModule($urlParams['module']);
         $this->assertController($urlParams['controller']);
-        $this->assertAction($urlParams['action']);
-        $this->assertQueryContentContains(
-            'div#view-content p',
-            'View script for controller <b>' . $params['controller'] . '</b> and script/action name <b>' . $params['action'] . '</b>'
+        $this->assertAction('notFound');
+        $this->assertContains(
+            'Topic not found.',
+            $this->response->outputBody()
             );
         $this->assertResponseCode(404);
     }
 
     public function testPostAction()
     {
-        $params = array('action' => 'post', 'controller' => 'Topics', 'module' => 'admin');
+        $action = 'post';
+
+        $this->request->setMethod($action);
+        $params = array(
+            'controller' => 'topics',
+            'module' => 'admin'
+        );
         $urlParams = $this->urlizeOptions($params);
         $url = $this->url($urlParams);
         $this->dispatch($url);
@@ -73,75 +94,90 @@ class Admin_TopicsControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
         // assertions
         $this->assertModule($urlParams['module']);
         $this->assertController($urlParams['controller']);
-        $this->assertAction($urlParams['action']);
-        $this->assertQueryContentContains(
-            'div#view-content p',
-            'View script for controller <b>' . $params['controller'] . '</b> and script/action name <b>' . $params['action'] . '</b>'
-            );
+        $this->assertAction($action);
+        $this->assertContains(
+            '"_id":',
+            $this->response->outputBody()
+        );
         $this->assertResponseCode(201);
-    }
-
-    public function testPutAction()
-    {
-        $params = array('action' => 'put', 'controller' => 'Topics', 'module' => 'admin');
-        $urlParams = $this->urlizeOptions($params);
-        $url = $this->url($urlParams);
-        $this->dispatch($url);
-
-        // assertions
-        $this->assertModule($urlParams['module']);
-        $this->assertController($urlParams['controller']);
-        $this->assertAction($urlParams['action']);
-        $this->assertQueryContentContains(
-            'div#view-content p',
-            'View script for controller <b>' . $params['controller'] . '</b> and script/action name <b>' . $params['action'] . '</b>'
-            );
-        $this->assertResponseCode(200);
     }
 
     public function testPutActionFail()
     {
-        $params = array('action' => 'put', 'controller' => 'Topics', 'module' => 'admin');
+        $action = 'put';
+
+        $this->request->setMethod($action);
+        $params = array(
+            'controller' => 'topics',
+            'module' => 'admin'
+        );
         $urlParams = $this->urlizeOptions($params);
-        $url = $this->url($urlParams);
+        $url = $this->url($urlParams) . '/1234';
         $this->dispatch($url);
-        $this->assertResponseCode(404);
+
+        // assertions
+        $this->assertModule($urlParams['module']);
+        $this->assertController($urlParams['controller']);
+        $this->assertAction($action);
+        $this->assertContains(
+            'Changing topics is not allowed.',
+            $this->response->outputBody()
+        );
+
+        $this->assertResponseCode(405);
     }
 
     public function testDeleteAction()
     {
-        $params = array('action' => 'delete', 'controller' => 'Topics', 'module' => 'admin');
+        $action = 'delete';
+        $existingId = 3;
+
+        $this->request->setMethod($action);
+        $params = array(
+            'controller' => 'topics',
+            'module' => 'admin',
+        );
         $urlParams = $this->urlizeOptions($params);
-        $url = $this->url($urlParams);
+        $url = $this->url($urlParams) . '/' . $existingId;
         $this->dispatch($url);
 
         // assertions
         $this->assertModule($urlParams['module']);
         $this->assertController($urlParams['controller']);
-        $this->assertAction($urlParams['action']);
-        $this->assertQueryContentContains(
-            'div#view-content p',
-            'View script for controller <b>' . $params['controller'] . '</b> and script/action name <b>' . $params['action'] . '</b>'
-            );
-        $this->assertResponseCode(204);
+        $this->assertAction($action);
+        $this->assertResponseCode(200);
+        $this->assertContains(
+            'Sucessfully removed the topic.',
+            $this->response->outputBody()
+        );
     }
 
     public function testDeleteActionFail()
     {
-        $params = array('action' => 'delete', 'controller' => 'Topics', 'module' => 'admin');
+        $action = 'delete';
+        $nonexistingId = 2;
+
+        $this->request->setMethod($action);
+        $params = array(
+            'controller' => 'topics',
+            'module' => 'admin',
+        );
         $urlParams = $this->urlizeOptions($params);
-        $url = $this->url($urlParams);
+        $url = $this->url($urlParams) . '/' . $nonexistingId;
+        $this->dispatch($url);
+
+        $this->assertContains('/' . $nonexistingId, $url);
         $this->dispatch($url);
 
         // assertions
         $this->assertModule($urlParams['module']);
         $this->assertController($urlParams['controller']);
-        $this->assertAction($urlParams['action']);
-        $this->assertQueryContentContains(
-            'div#view-content p',
-            'View script for controller <b>' . $params['controller'] . '</b> and script/action name <b>' . $params['action'] . '</b>'
-            );
+        $this->assertAction('notFound');
         $this->assertResponseCode(404);
+        $this->assertContains(
+            'Topic already gone',
+            $this->response->outputBody()
+        );
     }
 
 }
