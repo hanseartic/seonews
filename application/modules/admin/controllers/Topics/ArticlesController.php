@@ -58,7 +58,6 @@ class Admin_Topics_ArticlesController extends Zend_Rest_Controller
                 'message' => 'The article does not exist.',
             );
             return $this->_forward('notFound');
-           $this->getResponse()->setHttpResponseCode(404);
         }
     }
 
